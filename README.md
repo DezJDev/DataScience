@@ -1,6 +1,6 @@
 # ÉTUDES DES STRUCTURES DE DONNÉES ARBRE BINAIRE DE RECHERCHE & ARBRE ROUGE ET NOIR
 
-__### Table des matières__
+### Table des matières
   __Introduction:__
     Les Arbres Binaires de Recherche (ABR)
       __I. Implémentation en JAVA__

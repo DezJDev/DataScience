@@ -1,169 +1,170 @@
 # ÉTUDES DES STRUCTURES DE DONNÉES ARBRE BINAIRE DE RECHERCHE & ARBRE ROUGE ET NOIR
 
 ### Table des matières
-  __Introduction:__
-    Les Arbres Binaires de Recherche (ABR)
-      __I. Implémentation en JAVA__
-         A. Implémentation de la classe Nœud :
-         B. Les constructeurs de la classe ABR :
-         C. L'Itérator des ABR :
-         D. Ajouter un noeud dans un ABR :
-         E. Rechercher un noeud dans un ABR :
-         F. Supprimer un noeud dans un ABR :
-         G. Afficher un ABR :
-    __II. Etude de la complexité & Temps pour des applications sur grands ABR :__
-       A. Construction des données :
-       B. Complexités des courbes :
-          1. Complexité de la construction d'un ABR aléatoire et croissant :
-          2. Complexité de la recherche de clé présente dans un ABR aléatoire et croissant :
-      C. Interprétations des résultats :
-      D. Conclusion :
-  Les Arbres Rouges et Noirs (ARN)
-     __I. Implémentation en Java :__
-       A. La classe noeud :
-       B. Les constructeurs de la classe ArbreBicolore :
-       C. L'Itérator des ARN :
-       D. Ajouter un noeud dans un ARN :
-       E. Recherche une valeur dans un ARN :
-       F. Supprimer une valeur dans un ARN :
-       E. Afficher un ARN :
-    __II. Etude de la complexité et collecte des données pour la classe ArbreBicolore :__
-       A. Temps & Graphiques & Complexité des Constructions des ARN croissants et aléatoires
-       B.Temps & Graphiques des Temps pour la recherche de N clés présentes et absentes dans un ARN aléatoire et croissant
-  Conclusion Finale
+  __Introduction:__  
+    Les Arbres Binaires de Recherche (ABR)  
+      __I. Implémentation en JAVA__  
+         A. Implémentation de la classe Nœud :  
+         B. Les constructeurs de la classe ABR :  
+         C. L'Itérator des ABR :  
+         D. Ajouter un noeud dans un ABR :  
+         E. Rechercher un noeud dans un ABR :  
+         F. Supprimer un noeud dans un ABR :  
+         G. Afficher un ABR :  
+    __II. Etude de la complexité & Temps pour des applications sur grands ABR :__  
+       A. Construction des données :  
+       B. Complexités des courbes :  
+          1. Complexité de la construction d'un ABR aléatoire et croissant :  
+          2. Complexité de la recherche de clé présente dans un ABR aléatoire et croissant :  
+      C. Interprétations des résultats :  
+      D. Conclusion :  
+  Les Arbres Rouges et Noirs (ARN)  
+     __I. Implémentation en Java :__  
+       A. La classe noeud :  
+       B. Les constructeurs de la classe ArbreBicolore :  
+       C. L'Itérator des ARN :  
+       D. Ajouter un noeud dans un ARN :  
+       E. Recherche une valeur dans un ARN :  
+       F. Supprimer une valeur dans un ARN :  
+       E. Afficher un ARN :  
+    __II. Etude de la complexité et collecte des données pour la classe ArbreBicolore :__  
+       A. Temps & Graphiques & Complexité des Constructions des ARN croissants et aléatoires  
+       B.Temps & Graphiques des Temps pour la recherche de N clés présentes et absentes dans un ARN aléatoire et croissant  
+  Conclusion Finale  
+  
+### Introduction:  
+    Le monde évolue en permanence, le flux de donnée aussi. Ainsi pour répondre à cette  
+  demande incessante, nous devons nous développeur rendre ces flux plus optimisés. Afin que les  
+  ressources demandées soit moins nombreuses et gourmandes en énergie. La meilleure façon de  
+  parvenir à cette tâche est de construire des structures de données plus optimisés afin que le  
+  stockage, la recherche dans la structure, ou même la suppression soit plus rapide. En effet, les flux  
+  de donnée grossissent leur taille dépassant souvent et largement l'unité du Gigaoctet. Ainsi, il est  
+  devenu important de parvenir à stocker, parcourir ces données efficacement. Les mathématiciens &  
+  informaticiens se sont penchés sur la question tels que:  
 
-### Introduction:
-    Le monde évolue en permanence, le flux de donnée aussi. Ainsi pour répondre à cette
-  demande incessante, nous devons nous développeur rendre ces flux plus optimisés. Afin que les
-  ressources demandées soit moins nombreuses et gourmandes en énergie. La meilleure façon de
-  parvenir à cette tâche est de construire des structures de données plus optimisés afin que le
-  stockage, la recherche dans la structure, ou même la suppression soit plus rapide. En effet, les flux
-  de donnée grossissent leur taille dépassant souvent et largement l'unité du Gigaoctet. Ainsi, il est
-  devenu important de parvenir à stocker, parcourir ces données efficacement. Les mathématiciens &
-  informaticiens se sont penchés sur la question tels que:
-
-  • Donald Knuth dans son livre 'The Art of Computer Programming,' Knuth a expliqué le fonctionnement des arbres binaires de recherche.
-  • Rudolf Bayer (& Edward M.McCreight), ils ont introduit les arbresB, qui sont à la base des arbres rouges et noirs. Les arbresB sont
+  • Donald Knuth dans son livre 'The Art of Computer Programming,' Knuth a expliqué le fonctionnement des arbres binaires de recherche.  
+  • Rudolf Bayer (& Edward M.McCreight), ils ont introduit les arbresB, qui sont à la base des arbres rouges et noirs. Les arbresB sont  
   des arbreséquilibrés utilisés pour la recherche et le stockage de données.
-
-
- ### Les Arbres Binaires de Recherche (ABR)
-   ### I. Implémentation en JAVA
-      Pour implémenter nos ABR, nous aimerions qu'ils acceptent des données de n'importe quel 
-    type comparable. Cette classe implémentera la classe AbstractCollection<E> car on peut dire que 
-    cette structure de donnée est une collection d'objet de type E. Chaque donnée sera encapsulée dans 
-    un noeud.
-   ###  A. Implémentation de la classe Nœud :
-      La classe noeud est une sous-classe des ABR correspondante à l'essentiel du 
-    fonctionnement d'un ABR. Chaque noeud aura une clé correspondant à la valeur que l'on souhaite 
-    insérer dans l'arbre. Il aura également un noeud dit 'à sa gauche' et un noeud 'à sa droite'. Nous 
-    verrons plus tard dans ce rapport à quoi ces noeuds gauche et droit servent. Un noeud possèdera 
-    deux constructeur:
-    - Un constructeur vide
-    - Un constructeur avec un Element de type E. Ce type permet de stocker la majorité des objets en java.
+  
+  
+ ### Les Arbres Binaires de Recherche (ABR)  
+   ### I. Implémentation en JAVA  
+      Pour implémenter nos ABR, nous aimerions qu'ils acceptent des données de n'importe quel   
+    type comparable. Cette classe implémentera la classe AbstractCollection<E> car on peut dire que   
+    cette structure de donnée est une collection d'objet de type E. Chaque donnée sera encapsulée dans   
+    un noeud.  
+   ###  A. Implémentation de la classe Nœud :  
+      La classe noeud est une sous-classe des ABR correspondante à l'essentiel du   
+    fonctionnement d'un ABR. Chaque noeud aura une clé correspondant à la valeur que l'on souhaite   
+    insérer dans l'arbre. Il aura également un noeud dit 'à sa gauche' et un noeud 'à sa droite'. Nous   
+    verrons plus tard dans ce rapport à quoi ces noeuds gauche et droit servent. Un noeud possèdera   
+    deux constructeur:  
+    - Un constructeur vide  
+    - Un constructeur avec un Element de type E. Ce type permet de stocker la majorité des objets en java.  
     
-      Lorsqu'on utilise le constructeur vide, on instancie un objet de 
-    classe noeud. Il aura une clé null, un noeud gauche null, un 
-    noeud droit null et un noeud pere à null. D'un autre côté, quant 
-    on utilise le constructeur avec un Element, on affecte cet 
-    élément à l'attribut clé de l'objet. Ses noeuds sont quant à eux 
-    vide.
-    Maintenant que l'on sait comment créer un noeud, nous 
-    aimerions connaître le noeud minimum à l'instance du 
-    noeud sur laquel nous sommes. 
-    Nous aimerions également savoir quel est le noeud suivant sur 
-    l'instance du noeud. Afin de pouvoir itérer sur l'arbre de 
-    manière plus efficace.
-
-  Pour récupérer le noeud minimum de l'instance, nous allons explorer la branche gauche de 
-ce noeud jusqu'à tomber sur le dernier noeud de cette branche, traduit par un pointeur à gauche 
-équivalent à null.
-
-  Pour récupérer quant à lui le noeud suivant, nous allons premièrement regarder l'existence 
-d'un noeud droit sur celui que nous sommes afin de récupérer le minimum de ce noeud qui est donc 
-le noeud suivant. Si le noeud n'a pas de noeud à sa droite, c'est qu'il est déjà le noeud minimum de 
-sa branche droite, donc il est inutile d'appeler la fonction minimum(). Une fois que nous sommes au
-minimum de la branche droite de notre instance, nous allons 'remonter l'ABR' à l'aide des pointeurs 
-sur les pères des noeud que nous allons rencontrer jusqu'à trouver pour quel noeud courrant est un 
-fils gauche qui lui sera donc notre suivant. Cas spécial, courrant est en réalité le noeud ayant la clé 
-maximale, il n'existe donc pas de suivant, ainsi on retourne 'null' comme pour dire 'absence de 
-noeud suivant'.
-
-__Il existe trois types de noeud:__
+      Lorsqu'on utilise le constructeur vide, on instancie un objet de   
+    classe noeud. Il aura une clé null, un noeud gauche null, un   
+    noeud droit null et un noeud pere à null. D'un autre côté, quant   
+    on utilise le constructeur avec un Element, on affecte cet   
+    élément à l'attribut clé de l'objet. Ses noeuds sont quant à eux vide.
+      
+    Maintenant que l'on sait comment créer un noeud, nous   
+    aimerions connaître le noeud minimum à l'instance du   
+    noeud sur laquel nous sommes.   
+    Nous aimerions également savoir quel est le noeud suivant sur   
+    l'instance du noeud. Afin de pouvoir itérer sur l'arbre de   
+    manière plus efficace.  
+  
+  Pour récupérer le noeud minimum de l'instance, nous allons explorer la branche gauche de   
+ce noeud jusqu'à tomber sur le dernier noeud de cette branche, traduit par un pointeur à gauche   
+équivalent à null.  
+  
+  Pour récupérer quant à lui le noeud suivant, nous allons premièrement regarder l'existence   
+d'un noeud droit sur celui que nous sommes afin de récupérer le minimum de ce noeud qui est donc   
+le noeud suivant. Si le noeud n'a pas de noeud à sa droite, c'est qu'il est déjà le noeud minimum de   
+sa branche droite, donc il est inutile d'appeler la fonction minimum(). Une fois que nous sommes au  
+minimum de la branche droite de notre instance, nous allons 'remonter l'ABR' à l'aide des pointeurs   
+sur les pères des noeud que nous allons rencontrer jusqu'à trouver pour quel noeud courrant est un   
+fils gauche qui lui sera donc notre suivant. Cas spécial, courrant est en réalité le noeud ayant la clé   
+maximale, il n'existe donc pas de suivant, ainsi on retourne 'null' comme pour dire 'absence de   
+noeud suivant'.  
+  
+__Il existe trois types de noeud:__  
   • L'unique noeud racine de l'Arbre Binaire. Il se trouve tout en haut de l'arbre. Il n'a pas de 
-  père.
-  • Les noeuds centraux. Ils sont chacun un père et au moins un enfant.
-  • Les feuilles. Ils n'ont aucun enfant.
+  père.  
+  • Les noeuds centraux. Ils sont chacun un père et au moins un enfant.  
+  • Les feuilles. Ils n'ont aucun enfant.  
   Pour déterminer si l'instance du noeud sur lequel nous sommes est une feuille, nous utiliserons la 
-  méthode isFeuille() qui retourne un boolean si il ne possède pas d'enfant.
-  __Pour résumer, un noeud possède comme attribut:__
-      1. Une clé de type E. Permettant de stocker une majorité d'objet de java.
+  méthode isFeuille() qui retourne un boolean si il ne possède pas d'enfant.  
+  
+  __Pour résumer, un noeud possède comme attribut:__  
+      1. Une clé de type E. Permettant de stocker une majorité d'objet de java.  
       2. Un noeud gauche. Ce noeud sera inférieur au noeud d'instance. Nous utiliserons un 
       comparator pour vérifier l'infériorité de la valeur. Ce noeud aura comme valeur null si le 
-      noeud d'instance est une feuille.
+      noeud d'instance est une feuille.  
       3. Un noeud droit. Ce noeud sera supérieur au noeud d'instance. Nous utiliserons un 
       comparator également pour vérifier la supériorité de la valeur. Ce noeud aura comme valeur 
-      null si le noeud d'instance est une feuille.
+      null si le noeud d'instance est une feuille.  
       4. Un noeud père. Ce noeud sera le père du noeud actuel et sera null si le noeud d'instance est 
-      la racine.
+      la racine.  
       5. Nous disposons de trois méthodes, l'une permettant de récupérer le noeud minimum du 
       noeud d'instance, une autre pour récupérer dans tous les cas (sauf quand le noeud est le 
       noeud ayant la clé maximale) son noeud suivant et une dernière pour savoir si le noeud 
-      d'instance est une feuille ou non.
-      
-### B. Les constructeurs de la classe ABR :
+      d'instance est une feuille ou non.  
+        
+### B. Les constructeurs de la classe ABR :  
     Dorénavant qu'on dispose de la classe noeud, nous disposons d'un système permettant de 
   relier des noeuds entre-eux. Le plus dur est en réalité déjà réalisé. Nous allons dorénavant voir 
-  comment créer une structure de noeuds reliés les uns des autres. Et pour se faire, nous aurons donc 
-  __3 constructeurs différents:__ 
-    1. Un constructeur vide. Permettant de disposer d'un comparateur par défault.
-    2. Un constructeur dans lequel on définit le comparateur.
-    3. Un constructeur par recopie qui réalise une copie d'un ABR.
-
-  __Chaque Arbre Binaire de Recherche disposera comme paramètre:__
+  comment créer une structure de noeuds reliés les uns des autres.  
+  __3 constructeurs différents:__   
+    1. Un constructeur vide. Permettant de disposer d'un comparateur par défault.  
+    2. Un constructeur dans lequel on définit le comparateur.  
+    3. Un constructeur par recopie qui réalise une copie d'un ABR.  
+  
+  __Chaque Arbre Binaire de Recherche disposera comme paramètre:__  
 Un noeud racine. Ce noeud est l'ABR en entier en réalité car les enfants de ce noeud auront 
 ou non des enfants droit et gauche jusqu'à tomber sur les feuilles. Ce phénomène s'illustre cidessous: 
 Chaque arbre dispose également d'une taille équivalent au nombre de noeud que possède l'arbre en 
 tout et d'un comparateur permettant de comparer deux types de données afin de déterminer l'ordre 
-de l'arbre.
+de l'arbre.  
 
 ![Capture d'écran 2023-12-16 094946](https://github.com/DezJDev/DataScience/assets/144434644/366c04ee-5b4b-4bf1-a6d7-c1d9ac05136c)
 
 On utilise l'itérateur des ABR pour parcourir la structure entrée en paramètre et ajouter à chaque 
 itération le prochain noeud à l'aide de la méthode add(noeud Exemple) que l'on verra par la suite.
 
-### C. L'Itérator des ABR :
+### C. L'Itérator des ABR :  
     Afin de naviguer plus facilement dans la structure de donnée, on peut utiliser un Iterator. 
   Pour cela on implément la sous-classe ABRIterator. Cette sous-classe implémente l'interface 
   Iterator. Elle possède comme unique paramètre courrant (oui, j'écris courrant comme ça) une copie 
   d'une noeud racine afin d'itérer sur l'arbre sans rien trop bouger au sein de la structure. C'est 
   d'ailleurs dans le constructeur la classe que l'on va affecter au paramètre le noeud racine de l'ABR. 
   Pour créer cette classe implémentant l'interface Iterator<E>, nous devons surcharger les méthodes 
-  hasNext() et next(). 
+  hasNext() et next().   
   
   1. Pour la méthode hasNext() le principe est de savoir si le noeud courrant admet un noeud 
   suivant. Comme nous disposons de la méthode suivant() de la sous-classe noeud, il est aisé 
-  de déterminer ainsi l'existence d'un tel noeud. 
+  de déterminer ainsi l'existence d'un tel noeud.   
   2. Pour la méthode next() le principe est d'affecter courrant à son noeud suivant. Attention si il 
   n'existe pas de suivant, on doit renvoyer null car la méthode renvoie un objet de type E.
-  Voici un bref aperçu des méthodes hasNext() et next() :
+  Voici un bref aperçu des méthodes hasNext() et next() :  
 
   Comme nous n'utilisons pas les autres méthodes de l'interface Iterator dans le reste du code, il est 
   inutile de surcharger les autres méthodes de l'Interface. N'étant pas fan des Iterator, j'ai réalisé la 
-  classe sans vraiment l'utiliser.
+  classe sans vraiment l'utiliser.  
 
-### D. Ajouter un noeud dans un ABR :
+### D. Ajouter un noeud dans un ABR :  
     Pour ajouter un noeud dans cette structure de donnée implémentant l'interface 
   AbstractCollection, nous allons surcharger la méthode add de cette interface. La méthode prend en 
   paramètre une clé du type E que l'on souhaite insérer et retourne un boolean pour savoir si l'ajout 
   s'est réalisé avec succès. On refuse la valeur null comme valeur à ajouter. Ainsi on retourne false si 
   jamais l'utilisateur souhaite ajouter null comme valeur. Maintenant ce petit cas spécial mis de côté, 
-  attaquons-nous aux autres.
+  attaquons-nous aux autres.  
   
   • Premier cas, on ajoute une valeur dans un arbre vide. Un arbre vide est traduit par le fait que
   sa racine équivaut à null. Dans ce cas, c'est simple, on créer un noeud avec le constructeur 
   dans lequel on définit un élément et on affecte ce nouveau noeud à la racine. On instancie 
-  ses fils à null. On incrémente taille de 1 et on retourne true. 
+  ses fils à null. On incrémente taille de 1 et on retourne true.   
   • Second cas, l'arbre possède taille noeud(s). Dans ce cas, on créer un noeud
   (noeudToAppend) avec le constructeur dans lequel on définit un élément. On parcourt 
   l'arbre jusqu'à tomber sur une feuille. Pour cela on regarde la valeur de courrant avec 
@@ -173,33 +174,33 @@ itération le prochain noeud à l'aide de la méthode add(noeud Exemple) que l'o
   inférieure à ce noeud, on affecte à courrant.gauche noeudToAppend sinon on affecte à 
   courrant.droit noeudToAppend. Enfin, on affecte le père de noeudToAppend à courrant. On 
   finit par affecter les fils de noeudToAppend à null car c'est une feuille et on incrémente de 1 
-  la taille pour finir par retourner true pour dire que l'opération s'est bien effectué.
-  
-### E. Rechercher un noeud dans un ABR :
+  la taille pour finir par retourner true pour dire que l'opération s'est bien effectué.  
+    
+### E. Rechercher un noeud dans un ABR :  
     La méthode rechercher prend en paramètre une clé de classe E que l'on souhaite insérer et 
   retourne le noeud recherché pour effectuer diverse opération dessus. Comme toujours, si on 
-  recherche une valeur équivalente à null, on retourne null. Pour cette méthode il existe deux cas:
-  
+  recherche une valeur équivalente à null, on retourne null. Pour cette méthode il existe deux cas:  
+    
   • La clé recherchée est dans l'ABR. On parcourt l'ABR jusqu'à ce que la clé de courrant 
-  équivaut la clé recherchée. On retourne courrant.
+  équivaut la clé recherchée. On retourne courrant.  
   • La clé recherchée n'est pas dans l'ABR. On parcourt l'ABR on arrive jusqu'à une feuille, on 
   compare la clé recherchée et la feuille. Comme la clé recherchée n'est pas dans l'arbre, la 
   boucle s'arrête car on a affecté courrant à null car feuille.gauche ou feuille.droit est null et on
-  retourne courrant donc null.
-
-### F. Supprimer un noeud dans un ABR :
+  retourne courrant donc null.  
+  
+### F. Supprimer un noeud dans un ABR :  
   On surcharge la méthode remove() de la classe Collection. La méthode remove prend en 
   paramètre une clé de classe Object que l'on souhaite supprimer dans l'ABR et retourne un boolean. 
   Comme à son habitude, on accepte pas le fait de supprimer une valeur entrée en paramètre 
   équivalente à null et donc nous retournons false. Evidemment, supprimer un élément dans un arbre 
-  vide retourne également false. 
-  __Cette méthode possède trois cas spéciaux:__
+  vide retourne également false.   
+  __Cette méthode possède trois cas spéciaux:__  
       1. Le noeud a supprimé est une feuille. On va affecter au père null au noeud à supprimé. Si le 
     noeud à supprimé est un fils droit, alors on affecte nulle à son père.droit sinon on affecte à 
-    son père père.gauche à null.
+    son père père.gauche à null.  
       2. Le noeud a supprimé possède un fils. On va affecter au père, le fils au noeud à supprimé. Si 
     le noeud à supprimé est un fils droit, alors on affecte son fils à père.droit sinon on affecte à 
-    père.gauche son fils.
+    père.gauche son fils.  
       3. Le noeud a supprimé possède deux fils. Là c'est déjà plus compliqué. Premièrement, on va 
     récupérer le fils gauche du noeud courrant. On affecte le père du fils, son grand-père (père 
     de courrant). Cas spécial le père de courrant est null donc on a atteint la racine alors on 
@@ -208,11 +209,11 @@ itération le prochain noeud à l'aide de la méthode add(noeud Exemple) que l'o
     père, alors on définit au fils du père de courrant le fils sinon on définit au fils du père de 
     courrant le fils. En d'autres termes, il maintient la propriété de l'arbre binaire de recherche 
     après la suppression en s'assurant que le nœud père du nœud en cours de suppression pointe 
-    vers le bon nœud enfant après la suppression.
+    vers le bon nœud enfant après la suppression.  
     
-  On désincrémente la taille à chaque fois que la suppression à correctement fonctionné.
-
-### G. Afficher un ABR :
+  On désincrémente la taille à chaque fois que la suppression à correctement fonctionné.  
+ 
+### G. Afficher un ABR :  
     Après toutes ces explications assomantes, nous aimerions bien voir ce que ça donne dans la 
   console au final. Pour cela on surcharge la méthode toString() de la classe Collection. On 
   commence par créer un StringBuffer. Cette classe est très utile quant à sa maniabilité à créer des 
@@ -221,8 +222,8 @@ itération le prochain noeud à l'aide de la méthode add(noeud Exemple) que l'o
   part de celle surchargée. Elle se nomme également toString mais accepte en paramètre un noeud, un
   StringBuffer (celui que l'on vient de créer) une chaine correspondant au chemin du noeud et un 
   entier correspondant à la taille correspondant au nombre de caractère du plus grand objet sur un 
-  niveau de l'arbre. Cette méthode sera récursive. 
-
+  niveau de l'arbre. Cette méthode sera récursive.   
+  
     On fait son premier appel à la racine, avec un StringBuffer (buf) vide, un chemin de noeud vide ('') 
   puisqu'on est sur la racine, et on récupère la taille maximum avec maxStrLen(noeud enparamètre). 
   Cette méthode, renvoie 0 si le noeud en paramètre est null. Sinon grâce à Math.max, la méthode va 
@@ -232,27 +233,27 @@ itération le prochain noeud à l'aide de la méthode add(noeud Exemple) que l'o
   on parcourt l'ABR tout à sa droite à l'aide d'appel récursif. Donc le reste du programme sera fait sur 
   tout les niveaux de l'arbre et on commencera le programme sur le fils le plus à droite de l'ABR pour 
   chaque niveau. Une fois les appels récursifs terminés, nous nous trouvons sur le noeud n'ayant pas 
-  de suivant. (Le noeud ayant la clé maximale de l'ABR). 
-  
+  de suivant. (Le noeud ayant la clé maximale de l'ABR).   
+    
     Une fois que nous avons parcouru tout le côté droit de l'arbre, nous commençons à construire notre 
   chaîne. Pour chaque niveau de l'arbre, nous ajoutons un certain nombre d'espaces à 
   notre StringBuffer pour bien aligner notre affichage. Le nombre d'espaces ajoutés dépend de la 
   longueur de la clé la plus longue sur ce niveau de l'arbre (c'est pour cela que nous avons 
   calculé len précédemment). Ensuite, nous ajoutons un caractère spécial à notre chaîne. Ce caractère 
   est '+' si nous sommes sur le dernier niveau de l'arbre, et '|' sinon. Cela permet de bien visualiser les 
-  différents niveaux de l'arbre.
-  
+  différents niveaux de l'arbre.  
+    
     Après cela, nous ajoutons la clé du nœud actuel à notre chaîne. Si le nœud a des enfants, nous 
   ajoutons également '–' à notre chaîne pour indiquer qu'il y a des nœuds en dessous. Enfin, nous 
   ajoutons un certain nombre de '-' à notre chaîne pour aligner correctement l'affichage, puis nous 
-  ajoutons '|'.
+  ajoutons '|'.  
   Une fois que nous avons terminé avec le nœud actuel, nous faisons un appel récursif à la 
   méthode toString() sur le fils gauche du nœud. Nous continuons ce processus jusqu'à ce que nous 
   ayons parcouru tout l'arbre. À la fin, nous retournons notre StringBuffer converti en chaîne de 
-  caractères.
-
- ### II. Etude de la complexité & Temps pour des applications sur grands ABR :
-### A. Construction des données :
+  caractères.  
+  
+ ### II. Etude de la complexité & Temps pour des applications sur grands ABR :  
+### A. Construction des données :  
     Dorénavant, nous aimerions bien savoir la complexité de cette structure de donnée en 
   moyenne et dans le pire des cas. L'étude de la complexité fait très souvent intervenir le 'pire des 
   cas'. Ce cas dans un ABR est simple, c'est un arbre dit 'complètement désordonné' où chaque valeur 
@@ -262,25 +263,25 @@ itération le prochain noeud à l'aide de la méthode add(noeud Exemple) que l'o
   permet d'avoir un arbre nettement plus équilibré. Pour se faire, nous avons créer une classe 
   Main.java dans laquelle nous construirons reload fois un ABR de manière aléatoire, et un ABR de 
   manière croissant afin d'obtenir des valeurs moyennes pour chacun de ses arbres. Car il est possible 
-  que nos temps soient biaisés par un processus externe à cet algorithme. 
-  
-  __Pour stocker les résultats, nous allons utiliser les ArrayList :__
-    1. aleaTime - Stocke les temps pour la construction d'un ABR aléatoire.
-    2. worstCase - Stocke les temps pour la construction d'un ABR croissant.
+  que nos temps soient biaisés par un processus externe à cet algorithme.   
+    
+  __Pour stocker les résultats, nous allons utiliser les ArrayList :__  
+    1. aleaTime - Stocke les temps pour la construction d'un ABR aléatoire.  
+    2. worstCase - Stocke les temps pour la construction d'un ABR croissant.  
     3. searchInTimeAlea - Stocke les temps pour la recherche de clés présentes dans un ABR 
-      aléatoire.
+      aléatoire.  
     4. searchOutTimeAlea - Stocke les temps pour la recherche de clés absentes dans un ABR 
-      aléatoire.
+      aléatoire.  
     5. searchInWorstCase - Stocke les temps pour la recherche de clés présentes dans un ABR 
-      croissant.
+      croissant.  
     6. searchOutWorstCase - Stocke les temps pour la recherche de clés absentes dans un ABR 
-      croissant.
-      
+      croissant.  
+        
     Ensuite on boucle reload fois. L'entier reload correspond au nombre de fois que l'on refait 
   les opérations pour en calculer les moyennes en terme de temps. À chaque reload, on créer un arbre 
   d'abord de treeSize éléments jusqu'à treeSize*10 éléments. Le pas est de treeSize. Ainsi, nous 
-  réalisons toujours des arbres de taille équivalente. 
-  
+  réalisons toujours des arbres de taille équivalente.   
+    
     Pour réaliser un arbre aléatoire, on place la racine à treeSize/2. C'est la valeur médiane de 
   notre génération de nombre aléatoire. Ensuite on génère un nombre aléatoire entre 0 et treeSize pour
   chaque éléments ajoutés. On ajoute cet élément dans une ArrayList qui va nous servir plus tard pour
@@ -290,59 +291,59 @@ itération le prochain noeud à l'aide de la méthode add(noeud Exemple) que l'o
   l'itérateur k à l'ABR (une autre instance que l'ABR aléatoire) puis on ajoute k à une liste qui pareil 
   va nous servir plus tard pour rechercher N clés présentes dans l'ABR croissant. Une fois les Arbres 
   de N éléments réalisés, on récupère le temps mis par l'algortihme à l'aide de System.currentTimeMillis 
-  et on le stock dans worstCase.
-  
+  et on le stock dans worstCase.  
+    
   Pour rechercher N clés présentes dans l'ABR aléatoire, on parcourt la liste dans laquelle les 
   clés on étaient ajoutées au préalable. On utilise la fonction rechercher() pour chacune d'elle. Puis on
   récupère le temps, et on le stocke dans searchInAleaTime. On fait de même avec l'ABR croissant 
-  mais on stocke cette fois-ci le temps dans searchInWorstCase.
-  
+  mais on stocke cette fois-ci le temps dans searchInWorstCase.  
+    
   Pour rechercher N clés absentes, il faut sortir de la portée de l'ABR aléatoire. Pour cela on 
   va rechercher des clés supérieur à sa taille. On va rechercher une clé équivalente à treeSize + 1 + k 
   où k correspond à l'itérateur de la boucle. On récupère le temps et on le stocke dans 
   serachOutAleaTime. On fait pareil pour l'ABR croissant mais on va stocker les temps dans 
-  searchOutWorstCase.
-  
+  searchOutWorstCase.  
+    
   Maintenant que nous avons nos données, nous récupérons pour chaque liste le nombre 
   moyen pour chaque Nbéléments (treeSize * N). Ensuite à l'aide de la librairie XChart (petit 
   remerciement à Lucas LEMARCHAND pour m'avoir parlé de cette librairie incroyable), on obtient par 
-  pas de 1000 éléments les courbes suivantes.
-
-### B. Complexités des courbes :
-  __Maintenant que nous avons visuellement nos données, calculons la complexité de:__
-  1. Construction d'un ABR aléatoire (en moyenne).
-  2. Construction d'un ABR croissant.
-  3. Recherche de clé présente dans un ABR aléatoire (en moyenne).
-  4. Recherche de clé absente dans un ABR aléatoire (en moyenne).
-  5. Recherche de clé présente dans un ABR croissant.
+  pas de 1000 éléments les courbes suivantes.  
+  
+### B. Complexités des courbes :  
+  __Maintenant que nous avons visuellement nos données, calculons la complexité de:__  
+  1. Construction d'un ABR aléatoire (en moyenne).  
+  2. Construction d'un ABR croissant.  
+  3. Recherche de clé présente dans un ABR aléatoire (en moyenne).  
+  4. Recherche de clé absente dans un ABR aléatoire (en moyenne).  
+  5. Recherche de clé présente dans un ABR croissant.  
   6. Recherche de clé absente dans un ABR croissant.
-     
-### 1. Complexité de la construction d'un ABR aléatoire et croissant :
-    La complexité de la méthode add() revient au parcour que fait l'algorithme:
+       
+### 1. Complexité de la construction d'un ABR aléatoire et croissant :  
+    La complexité de la méthode add() revient au parcour que fait l'algorithme:  
   En moyenne, la complexité de ce parcour équivaut à O(log(n)). où n équivaut au nombre d'élément 
   à insérer. Le reste des instructions équivalent toutes O(1).
   Donc la complexité dans le pire des cas et dans chaque cas, et parce que l'aléatoire en moyenne 
   génère des arbres équilibrés, est de O(log(n)). La complexité dans le pire des cas, est O(n) car on est
-  obligé de parcourir tout l'arbre pour ajouter un noeud.
-
-### 2. Complexité de la recherche de clé présente dans un ABR aléatoire et croissant :
+  obligé de parcourir tout l'arbre pour ajouter un noeud.  
+  
+### 2. Complexité de la recherche de clé présente dans un ABR aléatoire et croissant :  
     Pour la méthode rechercher(), la complexité dépend de la hauteur de l'ABR. Le fait de savoir
   si la clé est présente ou non n'influe pas sur la complexité de la méthode. De même la complexité 
   dans un ABR aléatoire équivaut à O(log(n)) car cela dépend de la hauteur de l'ABR. Sinon la 
-  complexité vaut O(n) pour un arbre dégénéré car on doit parcourir n noeud dans le pire des cas.
-  __Voici les graphiques correspondant aux recherches des clés dans un ABR :__
+  complexité vaut O(n) pour un arbre dégénéré car on doit parcourir n noeud dans le pire des cas.  
+  __Voici les graphiques correspondant aux recherches des clés dans un ABR :__  
   ![ABRDATASearch](https://github.com/DezJDev/DataScience/assets/144434644/d617cd57-3962-43b8-9fc6-58e57334ac60)
-
+  
 ### C. Interprétations des résultats :
-Voici une visualisation graphique des temps de constructions des Arbres Binaire de 
-Recherche en fonction du nombre d'éléments qui compose l'Arbre:
+Voici une visualisation graphique des temps de constructions des Arbres Binaire de   
+Recherche en fonction du nombre d'éléments qui compose l'Arbre:  
 ![ABRDATABuild](https://github.com/DezJDev/DataScience/assets/144434644/f0349ee6-7fda-4abf-8dd8-d924ab7780a6)
-
-Sur le graphique de gauche, on remarque que l'échelle du temps est majorée à droite par ]0, 40]ms. 
-Sur le graphique de droite, on remarque que l'échelle du temps est majorée à droite par ]0, 25 000]ms.
-La construction d'un ABR aléatoire est nettement plus rapide que la construction d'un ABR croissant.
-
-### D . Conclusion :
+  
+Sur le graphique de gauche, on remarque que l'échelle du temps est majorée à droite par ]0, 40]ms.   
+Sur le graphique de droite, on remarque que l'échelle du temps est majorée à droite par ]0, 25 000]ms.  
+La construction d'un ABR aléatoire est nettement plus rapide que la construction d'un ABR croissant.  
+  
+### D . Conclusion :  
     Nous avons vus comment implémenter les Arbres Binaire de Recherche en Java. Nous avons
   étudiés le temps de construction d'Arbres Binaire de Recherche plus ou moins équilibrés, étudiés le 
   temps de construction d'Arbres Binaire de Recherche désordonnés, étudiés la recherche d'éléments 
@@ -352,8 +353,8 @@ La construction d'un ABR aléatoire est nettement plus rapide que la constructio
   avons conclus que l'ABR aléatoire était nettement plus rapide tant dans sa complexité que dans ses 
   résultats. Dorénavant, nous allons étudiés une structure de données qui corrige à l'écriture (add() et 
   supprimer()) l'emplacement de ses noeuds grâce au coloriage. On les nomme les Arbres Rouge et 
-  Noir.
-  
+  Noir.  
+    
 ### Les Arbres Rouges et Noirs (ARN)
     L'ARN ou d'arbre bicolore ou encore Arbre Rouge et Noir est un type d'Arbre Binaire de 
   Recherche équilibré. Chaque nœud de l'Arbre, possède un attribut 'couleur' (rouge ou noir). Cette 
